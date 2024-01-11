@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+</head>
+<body>
+    <div class="content" style="padding: 40px;">
+        <form class="container-fluid" method="post" action="/submit" style="padding: 40px;background-color: rgb(102, 219, 184);border-radius: 1rem;">
+            <label for="exampleFormControlInput1" class="form-label" style="font-family: 'Shadows Into Light', cursive;">Post Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="eg: New Year Resolutions" name="posttitle">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label" style="font-family: 'Shadows Into Light', cursive;">Post content</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Resolutions : 1)...." name="postdata"></textarea>
+            </div>
+            <div class="col d-flex justify-content-center mt-4">
+                <button class="btn btn-primary mx-auto" type="submit" id="sbtn">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
