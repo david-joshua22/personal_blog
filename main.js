@@ -4,6 +4,7 @@ import {dirname} from "path";
 import  {fileURLToPath}  from "url";
 import bodyParser from "body-parser";
 import mongoose from 'mongoose';
+import {} from "dotenv/config";
 
 const Schema = mongoose.Schema;
 
@@ -25,8 +26,9 @@ const blogData = new Schema({
         default:Date.now
     }
 })
-
-mongoose.connect('mongodb://127.0.0.1:27017/blogpost').then((result)=>console.log("Connected")).catch((err)=>{
+const adminPassword = encodeURIComponent(process.env.password)
+const username = process.env.user;
+mongoose.connect(`mongodb+srv://${username}:${adminPassword}@cluster0.q66skeb.mongodb.net/?retryWrites=true&w=majority`).then((result)=>console.log("Connected")).catch((err)=>{
     console.log(err);
 });
 
@@ -76,10 +78,12 @@ app.post("/submit",async (req,res)=>{
 });
 app.get('/vpost',(req,res)=>{
     try{
-        conn.find({}).sort({_id:-1}).limit(1).select("-_id -__v")
-         .exec().then((data)=>{
-        res.render('vpost.ejs',{record:data});
-    });
+        conn.find({}).sort({_id:-1}).limit(1).then((data)=>{
+            data.forEach(element => {
+                const new_id = element._id;
+                res.redirect(`/vpost/${new_id}`)
+            });
+        });
     }
     catch(error){
         console.log(error);
