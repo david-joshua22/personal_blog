@@ -56,7 +56,12 @@ app.get('',(req,res)=>{
     }
 )
 app.get('/about',(req,res)=>{
-    res.render('about.ejs');
+    const locals = {title:'About'}
+    res.render('about.ejs',locals);
+})
+app.get('/contact',(req,res)=>{
+    const locals = {title:'Contact'}
+    res.render('contact.ejs',locals);
 })
 app.get('/newpost',(req,res)=>{
     const locals = {title:'New Post'}
