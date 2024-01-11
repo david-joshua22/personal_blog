@@ -66,4 +66,8 @@ table tr:last-child {
     }
     .enterData{
         margin-top: 30px;    }
+    #blogcontent{
+            font-size: x-large;
+            text-align: left;
+        }
 }
