@@ -46,8 +46,9 @@ app.use(expressLayout);
 app.set('layout','./layouts/main.ejs');
 app.get('',(req,res)=>{
     try{
+        const locals = {title:'Index Page'}
         conn.find({}).sort({_id:-1}).limit(5).then((data)=>{
-            res.render('index.ejs',{record:data});
+            res.render('index.ejs',{locals,record:data});
         });
         }catch(error){
             console.log(error)
@@ -58,7 +59,8 @@ app.get('/about',(req,res)=>{
     res.render('about.ejs');
 })
 app.get('/newpost',(req,res)=>{
-    res.render('newpost.ejs');
+    const locals = {title:'New Post'}
+    res.render('newpost.ejs',{locals});
 })
 app.post("/submit",async (req,res)=>{
     var postTitle = req.body.posttitle;
@@ -92,9 +94,9 @@ app.get('/vpost',(req,res)=>{
 app.get('/vpost/:id',async(req,res)=>{
     try{
         let slug = req.params.id;
-        await conn.findById(slug).then((bdata)=>{
-            res.render('vpost.ejs',{record:bdata});
-        });
+        const bdata = await conn.findById({_id:slug})
+        const locals = {title:bdata.title};
+        res.render('vpost.ejs',{locals,bdata});
     }
     catch(error){
         console.log(error.message);
