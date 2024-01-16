@@ -6,19 +6,21 @@
     <title>Search Page</title>
 </head>
 <body>
-    <table class="postTable" style="padding: 10px;">
+    <div class="mindevice">
+      <table class="postTable">
         <thead style="font-size: xx-large;font-family: 'Shadows Into Light'">
             <td>Post</td>
             <td style="text-align: right;">Date</td>
         </thead>
         <% record.forEach(element => {%>
           <tbody style="font-size: large;font-family: 'TimesNewRoman';padding: 10px;">
-            <tr>
+            <tr style="border-bottom: 1px solid #000;">
               <td><a href="/vpost/<%=element._id %>" style="color: rgb(0, 60, 123);"><%= element.title %></a></td>
               <td style="text-align: right;"><%= element.createdDay.toDateString() %></td>
             </tr>
           </tbody>
         <%  }); %>
       </table>
+    </div>
 </body>
 </html>

@@ -40,7 +40,7 @@ th, td {
     padding: 10px;
   }
 
-  ​table tr {
+​table tr {
     border-bottom: 1px solid black;
 }​
 
@@ -70,4 +70,7 @@ table tr:last-child {
             font-size: x-large;
             text-align: left;
         }
-}
+    .mindevice{
+        padding: 10px;
+    }
+    }

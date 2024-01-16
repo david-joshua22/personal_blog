@@ -96,6 +96,16 @@ app.get('/vpost',(req,res)=>{
         console.log(error);
     }
 })
+app.get('/show',async(req,res)=>{
+    try{
+        await conn.find({}).sort({_id:-1}).then((data)=>{
+            res.render('show.ejs',{record:data});
+        });
+    }
+    catch(error){
+        console.log(error);
+    }
+})
 app.get('/vpost/:id',async(req,res)=>{
     try{
         let slug = req.params.id;
